@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.breakzhang</groupId>
+    <artifactId>springboot-learning</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <name>springboot-demo</name>
+
+    <!--多模块名称-->
+    <modules>
+        <module>spring-boot-web-test</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.1</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- 集中定义依赖版本号与基本配置 -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <easyexcel.version>2.2.6</easyexcel.version>
+        <fastjson.version>1.2.73</fastjson.version>
+        <mybatis.spring.boot.version>2.1.4</mybatis.spring.boot.version>
+    </properties>
+
+    <!-- 可以定义多个模块的公共依赖 -->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+    </dependencies>
+
+    <!--指定使用maven打包-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>    <!--默认关掉单元测试 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

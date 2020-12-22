@@ -3,15 +3,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <name>spring boot 学习</name>
+    <description>spring boot 统一父工程</description>
+
     <groupId>com.breakzhang</groupId>
     <artifactId>springboot-learning</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
-    <name>springboot-demo</name>
+
 
     <!--多模块名称-->
     <modules>
         <module>spring-boot-web-test</module>
+        <module>dubbo-api</module>
+        <module>dubbo-consumer</module>
+        <module>dubbo-provider</module>
     </modules>
 
     <parent>
@@ -26,9 +32,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+
         <easyexcel.version>2.2.6</easyexcel.version>
         <fastjson.version>1.2.73</fastjson.version>
         <mybatis.spring.boot.version>2.1.4</mybatis.spring.boot.version>
+        <dubbo.version>2.7.4.1</dubbo.version>
+
     </properties>
 
     <!-- 可以定义多个模块的公共依赖 -->
@@ -38,29 +48,69 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
 
     <!--指定使用maven打包-->
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+
+                <!--公共checkstyle标准配置，可以在子模块中覆盖，修改自定义选项-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>3.1.1</version>
+                    <configuration>
+                        <configLocation>config/checkstyle.xml</configLocation>
+                        <consoleOutput>true</consoleOutput>
+                        <encoding>UTF-8</encoding>
+                        <consoleOutput>true</consoleOutput>
+                        <failsOnError>true</failsOnError>
+                        <linkXRef>true</linkXRef>
+                        <skip>false</skip>
+                        <violationSeverity>error</violationSeverity>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>install</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>checkstyle</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skipTests>true</skipTests>    <!--默认关掉单元测试 -->
-                </configuration>
+                <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <!--所有子模块都要执行的报告-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
+
+
 
 </project>

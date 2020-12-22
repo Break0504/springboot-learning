@@ -64,14 +64,9 @@ public class UserInfController {
      */
     @RequestMapping("/addUser")
     @ResponseBody
-    public boolean addUser(UserInfDto user){
+    public boolean addUser(UserInfDto user) {
         user.setUserId(String.valueOf(System.currentTimeMillis()));
-        int i = userInfoDao.save(user);
-        if (i > 0){
-            return true;
-        }else {
-            return false;
-        }
+        return userInfoDao.save(user) > 0 ? true : false;
     }
 
     /**
@@ -94,13 +89,8 @@ public class UserInfController {
      */
     @RequestMapping("/updateUser")
     @ResponseBody
-    public boolean updateUser(UserInfDto user){
-        int i = userInfoDao.update(user);
-        if (i > 0){
-            return true;
-        }else {
-            return false;
-        }
+    public boolean updateUser(UserInfDto user) {
+        return userInfoDao.update(user) > 0 ? true : false;
     }
 
     /**
@@ -111,9 +101,9 @@ public class UserInfController {
     @GetMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         int i = userInfoDao.delete(id);
-        if (i > 0){
+        if (i > 0) {
             return "common/success";
-        }else {
+        } else {
             return "common/false";
         }
     }

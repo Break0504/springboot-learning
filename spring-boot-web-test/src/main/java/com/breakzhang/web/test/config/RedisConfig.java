@@ -19,7 +19,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class RedisConfig extends CachingConfigurerSupport {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RedisConfig.class) ;
+    private static final Logger LOGGER = LoggerFactory.getLogger(RedisConfig.class);
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {

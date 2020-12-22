@@ -21,18 +21,18 @@ import javax.servlet.http.HttpServletRequest;
 @Aspect
 @Component
 public class MvcAspect {
-    private static Logger LOGGER = LoggerFactory.getLogger(MvcAspect.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MvcAspect.class);
 
     public static final String EDP = "execution(* com.breakzhang.web.test.controller.*Controller.*(..))";
     public static final String PC_NM = "point()";
 
-    public MvcAspect(){}
+    public MvcAspect() { }
 
     /**
      * 定义切入点
      */
     @Pointcut(EDP)
-    public void point(){}
+    public void point() { }
 
     /**
      * 在切入点开始处切入内容

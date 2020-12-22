@@ -1,0 +1,15 @@
+spring:
+    # 引擎模板配置
+    thymeleaf:
+        cache: false # 关闭缓存
+        prefix: classpath:/templates/ # 指定 thymeleaf 模板路径
+        suffix: .html
+        encoding: UTF-8 # 指定字符集编码
+dubbo:
+    application:
+        name: dubbo
+    registry:
+        address: zookeeper://127.0.0.1:2181
+        timeout: 1000
+    consumer:
+        check: false

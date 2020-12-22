@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--将默认的头 <html lang="en"> 引入thymeleaf-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>新增用户</title>
+    <script th:src="@{/js/jquery-1.7.2.min.js}"></script>
+</head>
+<body>
+姓名：<input id="name"  name="name" type="text" /><br><br>
+出生日期：<input id="birth"  name="birth" type="text" /><br><br>
+手机号：<input id="mobileNo"  name="mobileNo" type="text" /><br><br>
+性别：<select id="sex" name="sex" style="width: 173px">
+                <option value="0">男</option>
+                <option value="1">女</option>
+            </select><br><br>
+<button  onclick="goadd()" name="sub" id="sub">添加</button>
+<button  name="button"  onclick="javascript:history.back(-1);">返回</button>
+</body>
+<script>
+    function goadd() {
+        var name = $("#name").val();
+        var birth = $("#birth").val();
+        var mobileNo = $("#mobileNo").val();
+        var sex = $("#sex").val();
+        $.post("/addUser",{name:name,birth:birth,sex:sex,mobileNo:mobileNo},function (res) {
+            if (res==true){
+                alert("添加成功")
+                window.location.href ="/";
+            }else {
+                alert("添加失败，请检查数据重试！");
+            }
+        })
+    }
+</script>
+</html>

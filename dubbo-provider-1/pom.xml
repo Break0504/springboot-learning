@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>dubbo-provider</name>
-    <description>dubbo 服务端</description>
+    <name>dubbo-provider-1</name>
+    <description>dubbo 服务端 xml 配置方式</description>
 
     <groupId>com.breakzhang</groupId>
-    <artifactId>dubbo-provider</artifactId>
+    <artifactId>dubbo-provider-1</artifactId>
     <version>1.0.0</version>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.breakzhang</groupId>
@@ -99,12 +101,6 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-        <!-- redis依赖 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -119,7 +115,7 @@
     </dependencies>
 
     <build>
-        <finalName>dubbo-provider</finalName>
+        <finalName>dubbo-provider-1</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -127,5 +123,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

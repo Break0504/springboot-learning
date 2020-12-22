@@ -32,13 +32,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
-
         <easyexcel.version>2.2.6</easyexcel.version>
         <fastjson.version>1.2.73</fastjson.version>
         <mybatis.spring.boot.version>2.1.4</mybatis.spring.boot.version>
         <dubbo.version>2.7.4.1</dubbo.version>
-
     </properties>
 
     <!-- 可以定义多个模块的公共依赖 -->

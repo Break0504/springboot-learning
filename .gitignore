@@ -37,6 +37,9 @@ build/
 bin/
 */bin/
 
+## Maven
+target/
+
 ## Eclipse Project files
 .project
 .classpath

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--将默认的头 <html lang="en"> 引入thymeleaf-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <script th:src="@{/js/jquery-1.7.2.min.js}"></script>
+</head>
+<body>
+
+<table width="888" border="1">
+        <thead>
+        <tr>
+            <th>用户编号</th>
+            <th>姓名</th>
+            <th>手机号</th>
+            <th>性别</th>
+            <th>生日</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="user:${alist}">
+            <td  align="center" th:text="${user.userId}"></td>
+            <td  align="center" th:text="${user.name}"></td>
+            <td  align="center" th:text="${user.mobileNo}"></td>
+            <td  align="center" th:text="${user.sex}"></td>
+            <td  align="center" th:text="${user.birth}"></td>
+            <td  align="center" th:text="${user.crtTs}"></td>
+            <td  align="center"><a th:href="@{'/goUpdateUser/'+${user.userId}}">修改</a>
+                <a th:href="@{'/deleteUser/'+${user.userId}}">删除</a>
+            </td>
+        </tr>
+        </thead>
+    </table>
+    <button><a href="/addUserHtml">添加</a></button>
+
+
+</body>
+
+</html>

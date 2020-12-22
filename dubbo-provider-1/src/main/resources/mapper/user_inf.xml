@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.breakzhang.dao.UserInfoDao">
+
+
+    <parameterMap id="param" type="com.breakzhang.req.UserInfReq"/>
+    <resultMap id="data" type="com.breakzhang.dto.UserInfDto"/>
+    
+    <sql id="tbl"> t_user_inf </sql>
+
+    <insert id="save" parameterMap="param">
+        insert into <include refid="tbl"/>
+          (user_id, name, mobile_no, birth, sex, crt_ts)
+        values
+          (#{userId}, #{name}, #{mobileNo}, #{birth}, #{sex}, current_timestamp(6))
+    </insert>
+
+    <select id="listUserInf" resultMap="data">
+        select * from <include refid="tbl"/>
+    </select>
+
+    <select id="getOne" resultMap="data">
+        select * from <include refid="tbl"/>
+        where  user_id = #{userId}
+         limit 1;
+    </select>
+
+    <select id="getOneByUserId" resultMap="data">
+        select * from <include refid="tbl"/> where user_id = #{userId}
+    </select>
+
+
+    <update id="update" parameterMap="param">
+        update <include refid="tbl"/>
+        set name = #{name},
+        mobile_no = #{mobileNo},
+        birth = #{birth},
+        sex = #{sex}
+        where user_id = #{userId}
+    </update>
+
+    <delete id="delete">
+        delete from <include refid="tbl"/>
+        where user_id = #{userId}
+    </delete>
+
+</mapper>

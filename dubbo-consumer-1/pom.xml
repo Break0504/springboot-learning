@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>dubbo-provider</name>
-    <description>dubbo 服务端</description>
+    <name>dubbo-consumer-1</name>
+    <description>dubbo 消费者 xml 配置方式</description>
 
-    <groupId>com.breakzhang</groupId>
-    <artifactId>dubbo-provider</artifactId>
+    <groupId>com.breakzhang.consumer</groupId>
+    <artifactId>dubbo-consumer-1</artifactId>
     <version>1.0.0</version>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.breakzhang</groupId>
         <artifactId>springboot-learning</artifactId>
         <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
@@ -22,20 +24,18 @@
     </properties>
 
     <dependencies>
-        <!-- 引入dubbo-api依赖 -->
+
         <dependency>
             <groupId>com.breakzhang</groupId>
             <artifactId>dubbo-api</artifactId>
             <version>1.0.0</version>
         </dependency>
 
-        <!-- 引入zk依赖 -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-dependencies-zookeeper</artifactId>
             <version>${dubbo.version}</version>
             <type>pom</type>
-            <!-- 因为我使用的是log4j2 所以就排除了log4j的依赖 -->
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -48,7 +48,6 @@
             </exclusions>
         </dependency>
 
-        <!-- 引入dubbo依赖 -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
@@ -61,17 +60,9 @@
             </exclusions>
         </dependency>
 
-        <!-- log4j2 日志依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
-
-        <!-- mybatis依赖 -->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.spring.boot.version}</version>
+            <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -80,11 +71,9 @@
             </exclusions>
         </dependency>
 
-        <!-- mysql 连接依赖 -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
 
         <dependency>
@@ -93,16 +82,9 @@
             <version>${fastjson.version}</version>
         </dependency>
 
-        <!-- aop依赖 -->
-        <dependency>
+        <dependency><!--页面模板依赖-->
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-
-        <!-- redis依赖 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <dependency>
@@ -110,7 +92,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -119,7 +100,7 @@
     </dependencies>
 
     <build>
-        <finalName>dubbo-provider</finalName>
+        <finalName>dubbo-consumer-1</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

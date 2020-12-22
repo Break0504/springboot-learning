@@ -272,4 +272,4 @@
 
 * idea 可以使用自带插件 check 单个模块
 
-![](img/checkstyle.png)
+![checkstyle](img/checkstyle.png)

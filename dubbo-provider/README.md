@@ -2,7 +2,7 @@
 
 ### 1. 创建 dubbo-api 模块
     
-![](../img/dubbo-api.png)
+![dubbo-api](../img/dubbo-api.png)
 
 修改pom.xml 文件
 
@@ -29,7 +29,7 @@
 
 ### 2. 创建 dubbo-provider 消费者模块
 
-![](../img/dubbo-provider.png)
+![dubbo-provider](../img/dubbo-provider.png)
 
 * 添加 dubbo 依赖
 
@@ -158,9 +158,9 @@ public class UserInfServiceImpl implements UserInfService {
 }
 
 ```
-### 创建 dubbo 消费者
+### 3. 创建 dubbo 消费者
 
-![](../img/dubbo-consumer.png)
+![dubbo-consumer](../img/dubbo-consumer.png)
 
 * 添加 dubbo 依赖
 ```xml

@@ -1,0 +1,37 @@
+spring:
+  # redis 配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 8  # 连接池最大空闲连接
+        min-idle: 0  # 连接池中的最小空闲连接
+        max-active: 8 # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: 10000ms #连接池最大阻塞等待时间（使用负值表示没有限制）
+    connect-timeout: 300 #连接超时时间（毫秒）
+
+
+# 更多可配置项见官方文档 2.6.2. 通过 JSON、YAML 和 Spring XML 文件配置单节点模式
+#  https://github.com/redisson/redisson/wiki/8.-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%92%8C%E5%90%8C%E6%AD%A5%E5%99%A8
+# https://github.com/redisson/redisson/wiki/2.-%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95#26-%E5%8D%95redis%E8%8A%82%E7%82%B9%E6%A8%A1%E5%BC%8F
+    redisson:
+      config:
+        singleServerConfig:
+          idleConnectionTimeout: 10000
+          connectTimeout: 10000
+          timeout: 3000
+          retryAttempts: 3
+          retryInterval: 1500
+          subscriptionsPerConnection: 5
+          clientName: null
+          address: "redis://127.0.0.1:6379"
+          subscriptionConnectionMinimumIdleSize: 1
+          subscriptionConnectionPoolSize: 50
+          connectionMinimumIdleSize: 32
+          connectionPoolSize: 64
+          database: 0
+          dnsMonitoringInterval: 5000
+          threads: 16
+          nettyThreads: 32
+          transportMode: "NIO"

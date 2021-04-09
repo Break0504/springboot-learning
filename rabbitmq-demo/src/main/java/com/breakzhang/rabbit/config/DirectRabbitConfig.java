@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @description: 直连交换机配置
  */
 @Configuration
-public class DirectRabbitMqConfig {
+public class DirectRabbitConfig {
 
 
     /**

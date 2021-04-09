@@ -3,6 +3,7 @@ package com.breakzhang.rabbit;
 import com.breakzhang.rabbit.direct.DirectSendService;
 import com.breakzhang.rabbit.fanout.FanoutSendService;
 import com.breakzhang.rabbit.filter.ListenerExcludeFilter;
+import com.breakzhang.rabbit.headers.HeaderSendService;
 import com.breakzhang.rabbit.topic.TopicSendService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ class RabbitmqDemoApplicationTests {
     private TopicSendService topicSendService;
     @Autowired
     private FanoutSendService fanoutSendService;
+    @Autowired
+    private HeaderSendService headerSendService;
 
     @Test
     void contextLoadsDirect() throws InterruptedException {
@@ -53,6 +56,20 @@ class RabbitmqDemoApplicationTests {
             Thread.sleep(2);
         }
         Thread.sleep(500000);
+    }
+
+    @Test
+    void contextLoadsHeaders() throws InterruptedException {
+        for (int i = 0; i < 4; i++) {
+            //headerSendService.sendHeadersQueue1(i);
+            Thread.sleep(1000);
+            headerSendService.sendHeadersQueue2(i);
+            Thread.sleep(2);
+            //headerSendService.sendHeadersQueue3(i);
+            Thread.sleep(2);
+            //headerSendService.sendHeadersQueue4(i);
+        }
+        Thread.sleep(10000);
     }
 
 

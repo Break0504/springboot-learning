@@ -45,4 +45,16 @@ public class DirectSendService {
         rabbitTemplate.convertAndSend(exchangName, "test.direct.email", message);
         //rabbitTemplate.convertAndSend(exchangName,"test.direct.log", message);
     }
+
+    public void sendMessage(int i) {
+        String messageId = UUID.randomUUID().toString();
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String message = "第" + i + "条：messageId：" + messageId + "  " + createTime;
+
+
+        LOGGER.debug("exchangName:{}, 正在发送 message:{}", exchangName, message);
+
+        rabbitTemplate.convertAndSend(exchangName, "test.direct.confirm.queue.1", message);
+        //rabbitTemplate.convertAndSend(exchangName,"test.direct.log", message);
+    }
 }

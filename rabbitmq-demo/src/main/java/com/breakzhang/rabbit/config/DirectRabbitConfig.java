@@ -29,6 +29,11 @@ public class DirectRabbitConfig {
         return new Queue("test.direct.log.queue");
     }
 
+    @Bean
+    public Queue TestConfirm() {
+        return new Queue("test.direct.confirm.queue.1");
+    }
+
     /**
      * 2.声明交换机
      */
@@ -50,6 +55,12 @@ public class DirectRabbitConfig {
     public Binding bindingExchangeLog() {
         return BindingBuilder.bind(TestDirectLog()).to(exchange())
                 .with("test.direct.log").noargs();
+    }
+
+    @Bean
+    public Binding bindingExchangeConfirm() {
+        return BindingBuilder.bind(TestConfirm()).to(exchange())
+                .with("test.direct.confirm.queue.1").noargs();
     }
 
 /*
